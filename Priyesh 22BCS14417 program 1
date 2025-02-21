@@ -1,0 +1,45 @@
+public class Solution {
+    public void sortColors(int[] nums) {
+        int low = 0, mid = 0, high = nums.length - 1;
+        
+        while (mid <= high) {
+            switch (nums[mid]) {
+                case 0:
+                    swap(nums, low++, mid++);
+                    break;
+                case 1:
+                    mid++;
+                    break;
+                case 2:
+                    swap(nums, mid, high--);
+                    break;
+            }
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+      
+        int[] nums1 = {2, 0, 2, 1, 1, 0};
+        sol.sortColors(nums1);
+        System.out.print("Example 1: ");
+        for (int num : nums1) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+      
+        int[] nums2 = {2, 0, 1};
+        sol.sortColors(nums2);
+        System.out.print("Example 2: ");
+        for (int num : nums2) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
